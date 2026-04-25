@@ -647,3 +647,38 @@ ul, ol { list-style: none; }
     line-height: 1.8;
   }
 }
+
+/* ════════════════════════════════════════════
+   LANGUAGE SWITCHER
+   ════════════════════════════════════════════ */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+.language-switcher a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: color var(--t);
+  padding: 1px 3px;
+}
+.language-switcher a:hover { color: var(--white); }
+.language-switcher a.lang-active {
+  color: var(--white);
+  pointer-events: none;
+}
+.language-switcher .lang-sep {
+  color: rgba(255,255,255,0.28);
+  font-size: 11px;
+}
+@media (max-width: 768px) {
+  .language-switcher { margin-left: 6px; padding: 4px 9px; font-size: 11px; }
+}

@@ -1,1 +1,4 @@
-google.com, pub-5508289096424625, DIRECT, f08c47fec0942fa0
+# ads.txt for kanex.co.jp
+# Replace with your Google AdSense publisher ID after approval
+# Example:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

@@ -744,3 +744,230 @@ ul, ol { list-style: none; }
 @media (max-width: 768px) {
   .blog-grid[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
 }
+
+/* ════════════════════════════════════════════
+   MOBILE FIX v3 — Definitive smartphone layout
+   ════════════════════════════════════════════ */
+
+/* ── President message page ── */
+.president-banner {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.president-body-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 48px 52px;
+  box-shadow: var(--shadow-lg);
+  max-width: 820px;
+  margin: 0 auto;
+  border-left: 4px solid var(--navy);
+}
+.president-body-card p {
+  font-size: 15.5px;
+  color: var(--gray-700);
+  line-height: 2.05;
+  margin-bottom: 22px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.president-sign {
+  text-align: right;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-200);
+}
+.president-sign-title {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+.president-sign-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+}
+
+/* ── Force horizontal text everywhere ── */
+* {
+  writing-mode: horizontal-tb !important;
+}
+h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* ── Universal mobile grid fix ── */
+@media (max-width: 768px) {
+  /* All grid containers → 1 column */
+  .biz-grid,
+  .biz-grid-3,
+  .why-grid,
+  .consult-grid,
+  .equip-grid,
+  .img-sec,
+  .recruit-grid,
+  .residential-grid,
+  .about-inner,
+  .work-grid,
+  .combo-grid,
+  .scope-grid,
+  .appeal-grid,
+  .contact-opts,
+  .blog-grid,
+  .tool-category-grid,
+  .reason-item,
+  .record-grid,
+  [id="biz4grid"],
+  [id="en-biz4grid"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  /* Inline grids with style attribute */
+  [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(4"],
+  [style*="grid-template-columns: repeat(3"],
+  [style*="grid-template-columns:repeat(3"],
+  [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(2"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Cards */
+  .biz-card, .why-card, .work-card, .combo-card,
+  .recruit-card, .res-card, .appeal-card, .co-card,
+  .blog-card, .tool-cat-item, .scope-card, .stat-card {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Headings */
+  .biz-card-title, .blog-title, .w-t, .why-t, .r-t,
+  .rc-t, .ap-t, .scope-t, .combo-t, .res-t, .co-t {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    word-break: keep-all !important;
+  }
+
+  /* Buttons — full width, min 44px tap */
+  .btn, .btn-o, .btn-b, .btn-g, .btn-w, .btn-ow, .btn-nv,
+  .gform-btn, .mobile-nav-cta {
+    min-height: 44px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Exception: inline small buttons in body text */
+  .btn[style*="align-self:flex-start"] {
+    width: auto !important;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .biz-card-img, .res-card-img {
+    height: 180px !important;
+    object-fit: cover !important;
+  }
+  .img-sec img {
+    height: 220px !important;
+  }
+
+  /* Direction reset */
+  .img-sec-rev { direction: ltr !important; }
+
+  /* President page */
+  .president-body-card {
+    padding: 28px 20px !important;
+  }
+  .president-body-card p {
+    font-size: 15px !important;
+    line-height: 1.9 !important;
+  }
+  .president-sign-name { font-size: 19px !important; }
+
+  /* Section padding */
+  .section-pad { padding: 48px 18px !important; }
+
+  /* Hero */
+  .hero h1 { font-size: clamp(22px, 7vw, 34px) !important; max-width: 100% !important; }
+  .page-hero h1 { font-size: clamp(20px, 6.5vw, 30px) !important; }
+
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .footer-inner > :first-child { grid-column: auto !important; }
+  .footer-bottom { flex-direction: column !important; text-align: center !important; }
+
+  /* Stats */
+  .stats-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* Company table */
+  .profile-table, .profile-table tbody,
+  .profile-table tr, .profile-table th, .profile-table td {
+    display: block !important; width: 100% !important;
+  }
+  .profile-table th {
+    white-space: normal !important;
+    background: none !important;
+    font-size: 11px !important;
+    color: var(--gray-500) !important;
+    padding: 12px 14px 2px !important;
+  }
+  .profile-table td { padding: 0 14px 14px !important; }
+
+  /* Contact opts */
+  .contact-opts { grid-template-columns: 1fr !important; }
+
+  /* Tel card */
+  .tel-card { flex-direction: column !important; text-align: center !important; }
+
+  /* gform */
+  .gform-wrap { padding: 28px 18px !important; }
+
+  /* scope grid */
+  .scope-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* blog grid on mobile */
+  .blog-grid { grid-template-columns: 1fr !important; }
+
+  /* inquiry info */
+  .inquiry-info ul { grid-template-columns: 1fr !important; }
+
+  /* scroll hint */
+  .scroll-hint { display: none !important; }
+
+  /* hero desc */
+  .hero-desc { display: none !important; }
+
+  /* btn group */
+  .btn-grp {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .btn-grp .btn { width: 100% !important; }
+}
+
+@media (max-width: 480px) {
+  .scope-grid, .record-grid, .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .section-pad { padding: 40px 16px !important; }
+  .biz-card-img { height: 160px !important; }
+}

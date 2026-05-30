@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Japanese pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://kanex.co.jp/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://kanex.co.jp/construction.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanex.co.jp/residential.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -10,14 +7,13 @@
   <url><loc>https://kanex.co.jp/precision-tools.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanex.co.jp/why-kanex.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/company.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kanex.co.jp/president-message.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/recruit.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://kanex.co.jp/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanex.co.jp/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kanex.co.jp/gamagori-reform.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanex.co.jp/gamagori-exterior-painting.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanex.co.jp/gamagori-demolition.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- English pages -->
   <url><loc>https://kanex.co.jp/en/index.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/en/construction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://kanex.co.jp/en/residential.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -25,14 +21,12 @@
   <url><loc>https://kanex.co.jp/en/precision-tools.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/en/why-kanex.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://kanex.co.jp/en/company.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://kanex.co.jp/en/president-message.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://kanex.co.jp/en/recruit.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://kanex.co.jp/en/contact.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-
-  <!-- Blog pages -->
   <url><loc>https://kanex.co.jp/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kanex.co.jp/blog/reform-checkpoints.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/blog/exterior-painting-timing.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/blog/small-demolition-guide.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kanex.co.jp/blog/roof-wall-maintenance.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
 </urlset>

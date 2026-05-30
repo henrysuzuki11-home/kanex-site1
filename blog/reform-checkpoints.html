@@ -12,6 +12,80 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508289096424625" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNG4VENQX7"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FNG4VENQX7');</script>
+
+  <style id="critical-blog-layout-fix">
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+    body { min-width: 0; }
+    .site-header { position: relative; z-index: 1000; width: 100%; }
+    main { display: block; width: 100%; }
+    .blog-article-hero {
+      position: relative !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      width: 100% !important;
+      margin: 0 !important;
+      background: #0b172a;
+      color: #ffffff;
+      padding: 72px 0 56px;
+      box-sizing: border-box;
+    }
+    .blog-article-hero .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+    .blog-breadcrumb { font-size: 13px; color: rgba(255,255,255,.72); margin-bottom: 22px; }
+    .blog-breadcrumb a { color: rgba(255,255,255,.85); text-decoration: none; }
+    .blog-article-category { color: #f26a2e; font-size: 14px; font-weight: 700; letter-spacing: .04em; margin: 0 0 14px; }
+    .blog-article-title {
+      color: #fff;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.35;
+      max-width: 880px;
+      margin: 0 0 18px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      writing-mode: horizontal-tb !important;
+    }
+    .blog-article-date { font-size: 14px; color: rgba(255,255,255,.75); margin: 0; }
+    .blog-article-main {
+      position: relative !important;
+      width: 100% !important;
+      background: #f6f7f9;
+      padding: 64px 0;
+      box-sizing: border-box;
+    }
+    .blog-article-content { max-width: 860px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+    .blog-article-body {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 12px 32px rgba(15,23,42,.08);
+      box-sizing: border-box;
+    }
+    .blog-article-body h2 { font-size: 24px; line-height: 1.5; margin: 40px 0 16px; color: #0b172a; word-break: keep-all; overflow-wrap: break-word; }
+    .blog-article-body p { font-size: 16px; line-height: 1.9; color: #1f2937; margin: 0 0 24px; word-break: keep-all; overflow-wrap: break-word; }
+    .ad-section { margin: 48px 0; padding: 16px; border: 1px solid #e5e7eb; border-radius: 16px; background: #fff; text-align: center; box-sizing: border-box; }
+    .ad-label { font-size: 12px; color: #6b7280; margin-bottom: 12px; letter-spacing: .04em; }
+    .ad-placeholder { min-height: 250px; display:flex; align-items:center; justify-content:center; color:#9ca3af; background:#f9fafb; border-radius:12px; }
+    .blog-cta-box { margin-top: 48px; padding: 28px; background:#fff; border-radius:20px; box-shadow: 0 12px 32px rgba(15,23,42,.08); box-sizing:border-box; }
+    @media (max-width: 768px) {
+      .blog-article-hero { padding: 48px 0 40px; }
+      .blog-article-hero .container, .blog-article-content { padding: 0 20px; }
+      .blog-article-title { font-size: 26px; line-height: 1.45; }
+      .blog-article-main { padding: 40px 0; }
+      .blog-article-body { padding: 28px 20px; border-radius: 16px; }
+      .blog-article-body h2 { font-size: 20px; }
+      .blog-article-body p { font-size: 15px; line-height: 1.85; }
+      .ad-section { margin: 32px 0; padding: 12px; }
+      .ad-placeholder { min-height: 220px; }
+      .btn-grp { display:flex; flex-direction:column; gap:12px; }
+      .btn-grp .btn, .blog-cta-box .btn { width:100%; min-height:44px; display:flex; align-items:center; justify-content:center; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -24,7 +98,7 @@
       </div>
       <nav class="nav">
         <a href="../index.html" class="nav-link">ホーム</a>
-        <a href="../construction.html" class="nav-link active">法人向け施工</a>
+        <a href="../construction.html" class="nav-link">法人向け施工</a>
         <a href="../residential.html" class="nav-link">家庭向けリフォーム</a>
         <a href="../electronics.html" class="nav-link">電子基板・実装</a>
         <a href="../precision-tools.html" class="nav-link">精密工具・研磨工具</a>
@@ -32,10 +106,30 @@
         <a href="../company.html" class="nav-link">会社概要</a>
         <a href="../president-message.html" class="nav-link">代表挨拶</a>
         <a href="../recruit.html" class="nav-link">採用情報</a>
-        <a href="../blog.html" class="nav-link">お役立ち情報</a>
+        <a href="../blog.html" class="nav-link active">お役立ち情報</a>
         <a href="../contact.html" class="nav-cta">お問い合わせ</a>
       </nav>
+      <div class="language-switcher"><a href="#" class="lang-active">JP</a></div>
+      <button class="hamburger" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    </div>
+  </header>
 
+  <nav class="mobile-nav">
+    <a href="../index.html" class="mobile-nav-link">ホーム</a>
+    <a href="../construction.html" class="mobile-nav-link">法人向け施工</a>
+    <a href="../residential.html" class="mobile-nav-link">家庭向けリフォーム</a>
+    <a href="../electronics.html" class="mobile-nav-link">電子基板・実装</a>
+    <a href="../precision-tools.html" class="mobile-nav-link">精密工具・研磨工具</a>
+    <a href="../why-kanex.html" class="mobile-nav-link">選ばれる理由</a>
+    <a href="../company.html" class="mobile-nav-link">会社概要</a>
+    <a href="../president-message.html" class="mobile-nav-link">代表挨拶</a>
+    <a href="../recruit.html" class="mobile-nav-link">採用情報</a>
+    <a href="../blog.html" class="mobile-nav-link active">お役立ち情報</a>
+    <a href="../contact.html" class="mobile-nav-cta">お問い合わせ</a>
+  </nav>
+
+
+  <main>
   <!-- ===== ARTICLE HERO ===== -->
   <section class="blog-article-hero">
     <div class="container">
@@ -121,6 +215,8 @@ AdSense承認後に差し替えます。
 
     </div>
   </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="footer-inner">

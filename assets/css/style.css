@@ -971,3 +971,42 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
   .section-pad { padding: 40px 16px !important; }
   .biz-card-img { height: 160px !important; }
 }
+
+/* ════════════════════════════════════════════
+   ADSENSE — blog pages only (ca-pub-5508289096424625)
+   ════════════════════════════════════════════ */
+.ad-section {
+  margin: 48px 0;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.ad-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.ad-placeholder {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  background: #f9fafb;
+  border-radius: 12px;
+  font-size: 13px;
+}
+@media (max-width: 768px) {
+  .ad-section {
+    margin: 32px 0;
+    padding: 12px;
+  }
+  .ad-placeholder {
+    min-height: 220px;
+  }
+}

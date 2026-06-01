@@ -1,66 +1,105 @@
-# Skyfellow Initiative — Website
+# KANEX Corporation — 公式サイト
 
-Bilingual (EN / JP) single-page website for the Skyfellow Initiative.
-Built for deployment on **GitHub Pages** with no external dependencies (Google Analytics, Google AdSense, and Google Forms excepted).
+株式会社カネックス（KANEX Corporation）の公式ウェブサイトです。  
+GitHub Pages で静的ファイルとして公開できます。
 
 ---
 
-## File Structure
+## ファイル構成
 
 ```
-skyfellow-site/
-├── index.html                      ← Main website (single file, all CSS + JS included)
-├── skyfellow-logo.jpg              ← Official Skyfellow logo (header brand mark)
-├── suzuki-profile-photo.jpeg       ← Suzuki photo for Founding Members section
-├── miwa-profile-photo.jpeg         ← Miwa photo for Founding Members section
-├── suzuki-greeting-photo.jpg       ← Suzuki portrait for Greeting section (Representative)
-├── miwa-greeting-photo.jpg         ← Miwa portrait for Greeting section (Partner)
-├── skyfellow-hero-bg.jpeg          ← Hero section background image
-├── skyfellow-global-network.jpeg   ← Purpose section supporting image
-├── skyfellow-bridge-concept.jpeg   ← Approach section supporting image
-└── skyfellow-ogp.jpeg              ← OGP / LinkedIn share image (metadata only)
+kanex-site/
+├─ index.html          # トップページ
+├─ construction.html   # 塗装・解体・リフォーム事業
+├─ electronics.html    # 電子基板・実装・ハーネス事業
+├─ why-kanex.html      # KANEXが選ばれる理由
+├─ company.html        # 会社概要
+├─ contact.html        # お問い合わせ
+├─ privacy.html        # プライバシーポリシー
+├─ Photos/             # 画像フォルダ（input_file_0〜15.png, kanex-logo.png）
+├─ assets/
+│  ├─ css/style.css    # 全ページ共通CSS
+│  └─ js/main.js       # ハンバーガーメニュー・スクロールエフェクト
+└─ README.md
 ```
 
-### Notes on photos
-- `suzuki-greeting-photo.jpg` and `miwa-greeting-photo.jpg` are currently set to the same images as the profile photos, so the site renders correctly out of the box. You may replace them with dedicated executive portraits (dark navy / charcoal business suit, conservative tie, professional studio framing) — keep the same filenames.
+---
+
+## GitHub Pages 公開手順
+
+### Step 1：GitHubリポジトリの作成
+
+1. https://github.com にアクセスしてログイン
+2. 右上「＋」→「New repository」をクリック
+3. Repository name に `kanex-site`（または任意の名前）を入力
+4. Visibility を **Public** に設定（GitHub Pages 無料プランは Public 必須）
+5. 「Create repository」をクリック
 
 ---
 
-## Integrations Built In
+### Step 2：ファイルをアップロード
 
-- **Google Analytics 4** — Measurement ID `G-QJZBGP9JZZ`
-- **Google AdSense** — Publisher `ca-pub-5508289096424625` (head script only, no visible ad blocks)
-- **Google Forms** — separate EN/JP contact forms wired to the language toggle
-- **LinkedIn** — public profile links on each member card
+**方法A：ブラウザからアップロード（推奨・簡単）**
 
----
+1. 作成したリポジトリのページを開く
+2. 「uploading an existing file」をクリック
+3. `kanex-site/` フォルダの中身をすべて選択してドラッグ＆ドロップ
+4. ⚠️ フォルダごとアップロードできない場合は、以下の順で繰り返す：
+   - ルートの `.html` ファイル（7ファイル）
+   - `assets/css/style.css`（フォルダ構造ごと）
+   - `assets/js/main.js`
+   - `Photos/` フォルダ内の画像すべて
+5. 「Commit changes」をクリック
 
-## GitHub Pages Deployment
+**方法B：Git コマンドライン**
 
-1. Create a new public GitHub repository.
-2. Upload **all files in this folder** to the repository root.
-3. Go to **Settings → Pages** → set Branch to `main`, folder `/` (root) → Save.
-4. After ~1 minute, the site will be live at `https://<username>.github.io/<repo-name>/`.
-
-For deployment to a custom domain (e.g. `skyfellow-initiative.com`), add a `CNAME` file to the repo root containing the domain, and configure DNS at your registrar to point to GitHub Pages.
-
----
-
-## Updating Content
-
-All content lives inside `index.html`. Open in any text editor.
-
-- **English text**: inside `<div class="en">` blocks
-- **Japanese text**: inside `<div class="jp">` blocks
-- **Contact form links**: search for `docs.google.com/forms`
-- **Color tokens**: CSS variables defined in `:root { ... }` at the top of the `<style>` block
+```bash
+git init
+git add .
+git commit -m "Initial commit: KANEX Corporation website"
+git remote add origin https://github.com/YOUR_USERNAME/kanex-site.git
+git push -u origin main
+```
 
 ---
 
-## Technical Notes
+### Step 3：GitHub Pages を有効化
 
-- Pure static HTML/CSS/JS — GitHub Pages compatible, no build step.
-- Responsive: desktop, tablet, and mobile.
-- Default language: English. Toggle: EN / JP.
-- All external links open in a new tab (`target="_blank"` + `rel="noopener noreferrer"`).
-- No personal email addresses displayed on the page.
+1. リポジトリの「Settings」タブをクリック
+2. 左メニューの「Pages」をクリック
+3. 「Source」→「Deploy from a branch」を選択
+4. Branch に **main**（または master）、フォルダに **/ (root)** を選択
+5. 「Save」をクリック
+6. 数分後に `https://YOUR_USERNAME.github.io/kanex-site/` で公開される
+
+---
+
+## 独自ドメイン接続時の注意点
+
+1. DNS設定でCNAMEレコードに `YOUR_USERNAME.github.io` を指定
+2. リポジトリの Settings → Pages → Custom domain にドメインを入力
+3. `kanex-site/` ルートに `CNAME` ファイルを作成し、ドメイン名を1行記入
+4. 「Enforce HTTPS」にチェックを入れる（証明書発行まで数分かかる場合あります）
+
+---
+
+## カスタマイズ
+
+| 変更内容 | 対象ファイル |
+|---------|-------------|
+| 色・フォント | assets/css/style.css の `:root` 変数 |
+| Google Map | company.html の `<iframe src="...">` を実際の埋め込みコードに差し替え |
+| Google フォーム URL | contact.html・privacy.html のリンクURLを確認 |
+| ロゴ画像 | Photos/kanex-logo.png を差し替え |
+| OGP 画像 | 各 .html の `<meta property="og:image">` に画像URLを追加 |
+
+---
+
+## お問い合わせフォーム
+
+Googleフォーム URL:  
+https://docs.google.com/forms/d/e/1FAIpQLScsQVau4MhDx8aRU4BgI4pmqSIFqitVKRauBHumlL_JH9M0Mg/viewform?usp=header
+
+---
+
+© 2025 KANEX Corporation. All Rights Reserved.

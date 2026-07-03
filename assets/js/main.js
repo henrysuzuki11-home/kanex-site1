@@ -42,4 +42,21 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(function (el) { observer.observe(el); });
   }
+
+  /* ── GA4 click tracking (phone / email / contact CTA) ── */
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!link || typeof window.gtag !== 'function') return;
+    var href = link.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) {
+      window.gtag('event', 'phone_click', { link_url: href, page_path: location.pathname });
+    } else if (href.indexOf('mailto:') === 0) {
+      window.gtag('event', 'email_click', { link_url: href, page_path: location.pathname });
+    } else if (href.indexOf('contact.html') !== -1) {
+      window.gtag('event', 'cta_click', {
+        link_text: (link.textContent || '').trim().slice(0, 50),
+        page_path: location.pathname
+      });
+    }
+  }, true);
 })();

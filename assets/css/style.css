@@ -1010,3 +1010,101 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
     min-height: 220px;
   }
 }
+
+/* ============================================================
+   記事内のPR表記・アフィリエイト広告カード（ブログ記事限定）
+   ※ 既存の .ad-section / .ad-label（忍者AdMax枠）とは別クラス。
+   ============================================================ */
+.pr-note {
+  font-size: 13px;
+  color: var(--gray-500);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 20px 0 8px;
+  line-height: 1.7;
+}
+.affiliate-card {
+  border: 2px solid #F0B36A;
+  background: #FFFAF3;
+  border-radius: 14px;
+  padding: 24px 22px;
+  margin: 36px 0;
+  text-align: center;
+}
+.affiliate-card.strong {
+  border-color: var(--orange-dark);
+  background: var(--orange-light);
+}
+.affiliate-card .af-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--orange-dark);
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.affiliate-card .af-card-title {
+  font-family: var(--font-jp);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--navy);
+  margin: 6px 0 12px;
+}
+.affiliate-card p {
+  text-align: left;
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.85;
+  margin: 0 0 18px;
+}
+.affiliate-button {
+  display: block;
+  background: var(--orange);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin: 18px auto 6px;
+  max-width: 420px;
+  box-shadow: 0 4px 0 var(--orange-dark);
+  transition: opacity 0.15s ease, transform 0.05s ease;
+}
+.affiliate-button:hover {
+  opacity: 0.92;
+  transform: translateY(1px);
+}
+.affiliate-banner {
+  margin-top: 18px;
+}
+.affiliate-banner img {
+  max-width: 100%;
+  height: auto;
+}
+.check-box {
+  background: #F6F8FB;
+  border-left: 5px solid var(--blue);
+  padding: 22px 24px;
+  margin: 30px 0;
+  border-radius: 10px;
+}
+.check-box h2 {
+  margin-top: 0;
+}
+.check-box ul {
+  padding-left: 22px;
+  line-height: 1.95;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .affiliate-card { padding: 20px 16px; }
+  .affiliate-card .af-card-title { font-size: 18px; }
+  .affiliate-button { font-size: 15px; padding: 15px 16px; }
+}

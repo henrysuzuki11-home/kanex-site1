@@ -43,11 +43,38 @@
     reveals.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ── GA4 click tracking (phone / email / contact CTA) ── */
+  /* ── GA4 click tracking ──
+     優先順位で1回だけ発火（重複計上を避ける）:
+     1) Amazonアフィリンク → affiliate_click
+     2) KANEX問い合わせCTA(data-kanex-cta) → kanex_contact_click
+     3) tel: → phone_click / mailto: → email_click
+     4) contact.html への一般リンク → cta_click
+     ※ 個人情報は送信しない。 */
   document.addEventListener('click', function (e) {
     var link = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!link || typeof window.gtag !== 'function') return;
     var href = link.getAttribute('href') || '';
+
+    if (link.hasAttribute('data-asin') || link.getAttribute('data-destination') === 'amazon') {
+      window.gtag('event', 'affiliate_click', {
+        asin: link.getAttribute('data-asin') || '',
+        product_name: link.getAttribute('data-product-name') || '',
+        article_slug: (location.pathname.split('/').pop() || '').replace('.html', ''),
+        category: link.getAttribute('data-category') || '',
+        position: link.getAttribute('data-position') || '',
+        destination: 'amazon',
+        associate_tag: link.getAttribute('data-associate-tag') || ''
+      });
+      return;
+    }
+    if (link.hasAttribute('data-kanex-cta')) {
+      window.gtag('event', 'kanex_contact_click', {
+        article_slug: link.getAttribute('data-article-slug') || (location.pathname.split('/').pop() || '').replace('.html', ''),
+        service_type: link.getAttribute('data-service-type') || '',
+        position: link.getAttribute('data-position') || ''
+      });
+      return;
+    }
     if (href.indexOf('tel:') === 0) {
       window.gtag('event', 'phone_click', { link_url: href, page_path: location.pathname });
     } else if (href.indexOf('mailto:') === 0) {

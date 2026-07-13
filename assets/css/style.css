@@ -1259,3 +1259,49 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
 }
 .kanex-cta-tel:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 .ft-amazon-note { font-size: 11px; opacity: 0.75; }
+
+/* ============================================================
+   A8アフィリエイト広告カード 追加分（Zehitomo / ラクサポ）
+   ※ .ad-label は「.affiliate-card 内」限定でPRピルにする（既存の忍者AdMax
+      枠の .ad-label〈スポンサーリンク〉表示は変更しない）。
+   ============================================================ */
+.affiliate-card.solar {
+  border-color: #4F9F6F;
+  background: #F2FBF5;
+}
+/* カード見出し（H例が <h2>）を、既存の .af-card-title と同じ見え方に整える */
+.affiliate-card h2 {
+  font-family: var(--font-jp);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--navy);
+  margin: 6px 0 12px;
+}
+/* カード内PRラベル（ピル）。card外の .ad-label には影響しない */
+.affiliate-card .ad-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--orange-dark);
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin: 0 0 10px;
+}
+.affiliate-card.solar .ad-label { background: #3F8F5F; }  /* 緑カードのPRは緑系 */
+/* ファーストビュー付近のPR表記（.pr-note と同等。任意で利用可） */
+.pr-label {
+  display: block;
+  font-size: 13px;
+  color: var(--gray-700);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 0 0 18px;
+}
+@media (max-width: 600px) {
+  .affiliate-card h2 { font-size: 18px; }
+}

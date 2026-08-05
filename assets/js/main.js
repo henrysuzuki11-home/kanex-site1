@@ -47,8 +47,9 @@
      優先順位で1回だけ発火（重複計上を避ける）:
      1) Amazonアフィリンク → affiliate_click
      2) KANEX問い合わせCTA(data-kanex-cta) → kanex_contact_click
-     3) tel: → phone_click / mailto: → email_click
-     4) contact.html への一般リンク → cta_click
+     3) お問い合わせフォーム(Googleフォーム/gform-btn) → contact_form_open
+     4) tel: → phone_click / mailto: → email_click
+     5) contact.html への一般リンク → cta_click
      ※ 個人情報は送信しない。 */
   document.addEventListener('click', function (e) {
     var link = e.target && e.target.closest ? e.target.closest('a') : null;
@@ -75,7 +76,12 @@
       });
       return;
     }
-    if (href.indexOf('tel:') === 0) {
+    if (href.indexOf('docs.google.com/forms') !== -1 || link.className.indexOf('gform-btn') !== -1) {
+      window.gtag('event', 'contact_form_open', {
+        link_text: (link.textContent || '').trim().slice(0, 50),
+        page_path: location.pathname
+      });
+    } else if (href.indexOf('tel:') === 0) {
       window.gtag('event', 'phone_click', { link_url: href, page_path: location.pathname });
     } else if (href.indexOf('mailto:') === 0) {
       window.gtag('event', 'email_click', { link_url: href, page_path: location.pathname });

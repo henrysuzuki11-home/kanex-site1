@@ -1305,3 +1305,43 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
 @media (max-width: 600px) {
   .affiliate-card h2 { font-size: 18px; }
 }
+
+/* ===== お問い合わせフォーム（サイト内埋め込み / kx- 名前空間） ===== */
+.kx-form{max-width:640px;margin:0 auto;text-align:left;}
+.kx-fieldset{border:none;padding:0;margin:0 0 22px;}
+.kx-legend{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:12px;padding:0;}
+.kx-req{display:inline-block;font-size:10px;font-weight:700;color:var(--white);background:var(--orange);border-radius:4px;padding:2px 6px;margin-left:6px;vertical-align:middle;letter-spacing:0.04em;}
+.kx-opt{display:inline-block;font-size:10px;font-weight:700;color:var(--gray-500);background:var(--gray-100);border-radius:4px;padding:2px 6px;margin-left:6px;vertical-align:middle;}
+.kx-choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.kx-choice{display:flex;align-items:center;gap:8px;border:1.5px solid var(--gray-200);border-radius:10px;padding:14px 16px;font-size:15px;font-weight:700;color:var(--navy);cursor:pointer;transition:all var(--t);background:var(--white);}
+.kx-choice:hover{border-color:var(--orange);}
+.kx-choice input{accent-color:var(--orange);width:18px;height:18px;flex-shrink:0;}
+.kx-choice.kx-checked{border-color:var(--orange);background:var(--orange-light);}
+.kx-field{margin-bottom:16px;}
+.kx-field>label{display:block;font-size:13px;font-weight:700;color:var(--gray-700);margin-bottom:6px;}
+.kx-field input,.kx-field select,.kx-field textarea{width:100%;font-family:var(--font-jp);font-size:16px;color:var(--gray-900);background:var(--white);border:1.5px solid var(--gray-200);border-radius:10px;padding:12px 14px;transition:border var(--t),box-shadow var(--t);-webkit-appearance:none;appearance:none;}
+.kx-field select{background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%208'%3E%3Cpath%20fill='%236B7280'%20d='M1%201l5%205%205-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:36px;}
+.kx-field input:focus,.kx-field select:focus,.kx-field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,0.12);}
+.kx-field textarea{resize:vertical;min-height:120px;line-height:1.7;}
+.kx-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.kx-section{display:none;}
+.kx-section.kx-active{display:block;animation:kxfade var(--t);}
+.kx-subsection{display:none;}
+.kx-subsection.kx-active{display:block;}
+@keyframes kxfade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+.kx-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden;}
+.kx-consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-700);margin:8px 0 20px;line-height:1.6;}
+.kx-consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--orange);flex-shrink:0;}
+.kx-submit{width:100%;justify-content:center;font-size:16px;padding:16px;}
+.kx-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none;}
+.kx-status{margin-top:16px;font-size:14px;line-height:1.75;border-radius:10px;}
+.kx-status:empty{display:none;}
+.kx-status.kx-ok{background:var(--green-light);color:#15803D;border:1px solid #86EFAC;padding:18px 20px;}
+.kx-status.kx-err{background:#FEF2F2;color:#B91C1C;border:1px solid #FCA5A5;padding:18px 20px;}
+.kx-status .kx-id{font-weight:700;}
+.kx-error-msg{color:#B91C1C;font-size:12px;margin-top:4px;}
+.kx-field.kx-invalid input,.kx-field.kx-invalid select,.kx-field.kx-invalid textarea{border-color:#EF4444;}
+.kx-field.kx-invalid input:focus,.kx-field.kx-invalid select:focus,.kx-field.kx-invalid textarea:focus{box-shadow:0 0 0 3px rgba(239,68,68,0.12);}
+.kx-hint{font-size:12px;color:var(--gray-500);margin-top:4px;line-height:1.6;}
+.kx-notice{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:var(--radius);padding:14px 18px;font-size:13px;color:var(--gray-700);line-height:1.8;margin-bottom:20px;}
+@media (max-width:600px){.kx-grid2{grid-template-columns:1fr;}}

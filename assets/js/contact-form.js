@@ -9,7 +9,7 @@
    Apps Script 連携仕様（フィールド名）は従来どおり。 */
 (function () {
   'use strict';
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbxcyXPk6BvyTMVQ37slhJDx3_gP5K_9rUlRp95JbxRC9zhU0uSrxnTK5AjUCdmMd4lc/exec';
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbwAFAZOEJ6mtMpVSeUynkxSPlpo4XL4petzW_8AoyG-bMTFFV6-MIhMhqtFsc2kBEIA/exec';
   var DEBUG = false; // 診断ログ（Console・個人情報は出力しない）。再診断時のみ一時的に true。
 
   var form = document.getElementById('kx-inquiry-form');

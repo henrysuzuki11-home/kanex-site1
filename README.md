@@ -89,7 +89,7 @@ git push -u origin main
 |---------|-------------|
 | 色・フォント | assets/css/style.css の `:root` 変数 |
 | Google Map | company.html の `<iframe src="...">` を実際の埋め込みコードに差し替え |
-| Google フォーム URL | contact.html・privacy.html のリンクURLを確認 |
+| 問い合わせ送信先 | assets/js/contact-form.js の GAS_URL（Apps Script Web App）を確認 |
 | ロゴ画像 | Photos/kanex-logo.png を差し替え |
 | OGP 画像 | 各 .html の `<meta property="og:image">` に画像URLを追加 |
 
@@ -97,8 +97,15 @@ git push -u origin main
 
 ## お問い合わせフォーム
 
-Googleフォーム URL:  
-https://docs.google.com/forms/d/e/1FAIpQLScsQVau4MhDx8aRU4BgI4pmqSIFqitVKRauBHumlL_JH9M0Mg/viewform?usp=header
+KANEXサイト内の埋め込みフォーム（`contact.html` の5ステップ・ウィザード）から
+Google Apps Script Web App へ POST し、スプレッドシート「KANEX_お問い合わせ管理」に保存します。
+
+- フォームUI: `contact.html`（`#inquiry-form`）
+- 制御スクリプト: `assets/js/contact-form.js`
+- 送信先(GAS): `assets/js/contact-form.js` 内の `GAS_URL`
+- 各事業ページからは `contact.html?type=reform|demolition|tools|electronics` で種別を自動選択
+
+※ Googleフォームは廃止済み（サイト内フォームに完全移行）。
 
 ---
 

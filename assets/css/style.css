@@ -1345,3 +1345,67 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
 .kx-hint{font-size:12px;color:var(--gray-500);margin-top:4px;line-height:1.6;}
 .kx-notice{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:var(--radius);padding:14px 18px;font-size:13px;color:var(--gray-700);line-height:1.8;margin-bottom:20px;}
 @media (max-width:600px){.kx-grid2{grid-template-columns:1fr;}}
+
+/* ===== お問い合わせフォーム 5ステップ化（kx- 名前空間 / 既存に非干渉） ===== */
+.kx-progress{margin-bottom:28px;}
+.kx-progress-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.kx-step-label{font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--gray-500);}
+.kx-step-label b{color:var(--orange);}
+.kx-step-pct{font-size:13px;font-weight:700;color:var(--navy);}
+.kx-progress-bar{height:6px;background:var(--gray-200);border-radius:999px;overflow:hidden;}
+.kx-progress-fill{height:100%;width:20%;background:var(--orange);border-radius:999px;transition:width .4s ease;}
+.kx-step{display:none;}
+.kx-step.kx-active{display:block;animation:kxfade .25s ease;}
+.kx-step-title{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.kx-step-desc{font-size:13px;color:var(--gray-500);line-height:1.75;margin-bottom:20px;}
+.kx-only{display:none;}
+.kx-only.kx-active{display:block;}
+/* 種別カード */
+.kx-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.kx-card{position:relative;display:flex;flex-direction:column;gap:4px;border:1.5px solid var(--gray-200);border-radius:12px;padding:20px 18px;cursor:pointer;transition:all var(--t);background:var(--white);}
+.kx-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:var(--shadow);}
+.kx-card input{position:absolute;opacity:0;pointer-events:none;}
+.kx-card.kx-checked{border-color:var(--orange);background:var(--orange-light);box-shadow:0 0 0 3px rgba(232,109,43,0.12);}
+.kx-card-t{font-size:16px;font-weight:700;color:var(--navy);}
+.kx-card-d{font-size:12px;color:var(--gray-500);}
+.kx-card.kx-checked .kx-card-t{color:var(--orange-dark);}
+/* 個人/法人などの小カード */
+.kx-choice.kx-checked{border-color:var(--orange);background:var(--orange-light);}
+/* 折りたたみ */
+.kx-acc{border:1px solid var(--gray-200);border-radius:10px;margin-bottom:12px;overflow:hidden;background:var(--white);}
+.kx-acc>summary{list-style:none;cursor:pointer;padding:14px 18px;font-size:14px;font-weight:700;color:var(--navy);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.kx-acc>summary::-webkit-details-marker{display:none;}
+.kx-acc>summary::after{content:'＋';color:var(--orange);font-weight:700;font-size:16px;}
+.kx-acc[open]>summary::after{content:'−';}
+.kx-acc>summary:hover{background:var(--gray-50);}
+.kx-acc-body{padding:4px 18px 18px;}
+/* ナビゲーション */
+.kx-nav{display:flex;gap:12px;margin-top:26px;}
+.kx-nav .kx-back{flex:0 0 auto;}
+.kx-nav .kx-next,.kx-nav .kx-submit{flex:1 1 auto;justify-content:center;font-size:16px;padding:15px;}
+.kx-nav .btn{min-height:50px;}
+/* 確認 */
+.kx-review-group{border:1px solid var(--gray-200);border-radius:12px;padding:18px 20px;margin-bottom:14px;}
+.kx-review-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.kx-review-head h4{font-size:14px;font-weight:700;color:var(--navy);}
+.kx-edit{font-size:12px;font-weight:700;color:var(--blue);background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px;}
+.kx-edit:hover{background:var(--blue-light);}
+.kx-review-row{display:flex;gap:12px;padding:6px 0;font-size:13px;line-height:1.7;border-top:1px dashed var(--gray-200);}
+.kx-review-row:first-of-type{border-top:none;}
+.kx-review-row .kx-rk{flex:0 0 38%;color:var(--gray-500);}
+.kx-review-row .kx-rv{flex:1 1 auto;color:var(--gray-900);font-weight:600;word-break:break-word;}
+.kx-review-empty{font-size:13px;color:var(--gray-500);}
+/* 完了カード */
+.kx-complete{max-width:640px;margin:0 auto;text-align:center;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:44px 28px;box-shadow:var(--shadow);}
+.kx-complete-icon{width:64px;height:64px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:34px;}
+.kx-complete h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+.kx-complete p{font-size:14px;color:var(--gray-700);line-height:1.9;margin-bottom:8px;}
+.kx-complete .kx-id-box{display:inline-block;margin-top:14px;background:var(--gray-50);border-radius:10px;padding:12px 22px;font-size:14px;color:var(--gray-700);}
+.kx-complete .kx-id-box b{color:var(--navy);letter-spacing:0.04em;}
+@media (max-width:600px){
+  .kx-cards{grid-template-columns:1fr;}
+  .kx-nav{flex-direction:row;}
+}
+
+/* nav ボタンの表示切替（モバイルの .btn{display:flex!important} を打ち消す） */
+.kx-nav .btn[hidden]{display:none!important;}

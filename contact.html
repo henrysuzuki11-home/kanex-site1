@@ -107,406 +107,453 @@
       <div style="text-align:center;margin-bottom:28px;">
         <span class="eyebrow">INQUIRY FORM</span>
         <h2 class="section-title">お問い合わせフォーム</h2>
-        <p style="font-size:14px;color:var(--gray-700);margin-top:8px;line-height:1.85;margin-bottom:12px;">蒲郡市周辺のリフォーム、外壁塗装、屋根塗装、小規模解体、撤去工事のお見積もり・ご相談を受け付けています。<strong>入力は1〜2分</strong>、相談だけでもかまいません。</p>
-        <p style="font-size:14px;color:var(--gray-500);line-height:1.85;">まず<strong>お問い合わせ種別</strong>をお選びください。種別に応じて必要な項目だけを表示します。通常2〜3営業日以内にご返答いたします。</p>
+        <p style="font-size:14px;color:var(--gray-700);margin-top:8px;line-height:1.85;margin-bottom:12px;">約1〜2分で入力できます。ご相談だけでもお気軽にお問い合わせください。</p>
+        <p style="font-size:14px;color:var(--gray-500);line-height:1.85;">通常2〜3営業日以内にご返信いたします。</p>
       </div>
       <form id="kx-inquiry-form" class="kx-form" novalidate>
-        <!-- スパム対策 honeypot（利用者には非表示） -->
-        <div class="kx-hp" aria-hidden="true">
-          <label>Webサイト（この欄は入力しないでください）
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </label>
+        <!-- スパム対策 honeypot（人間には非表示・支援技術からも除外） -->
+        <div class="kx-hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"></div>
+
+        <div class="kx-progress">
+          <div class="kx-progress-head">
+            <span class="kx-step-label">STEP <b id="kx-step-cur">1</b> / 5</span>
+            <span class="kx-step-pct" id="kx-step-pct">20%</span>
+          </div>
+          <div class="kx-progress-bar"><div class="kx-progress-fill" id="kx-progress-fill"></div></div>
         </div>
 
-        <fieldset class="kx-fieldset">
-          <legend class="kx-legend">お問い合わせ種別<span class="kx-req">必須</span></legend>
-          <div class="kx-choice-grid" role="radiogroup" aria-label="お問い合わせ種別">
-            <label class="kx-choice"><input type="radio" name="inquiry_type" value="リフォーム" required>リフォーム</label>
-            <label class="kx-choice"><input type="radio" name="inquiry_type" value="解体">解体</label>
-            <label class="kx-choice"><input type="radio" name="inquiry_type" value="工具">工具</label>
-            <label class="kx-choice"><input type="radio" name="inquiry_type" value="電子部品">電子部品</label>
+      <div class="kx-step" data-step="1">
+        <h3 class="kx-step-title">お問い合わせ種別</h3>
+        <p class="kx-step-desc">ご相談内容をお選びください。選んだ内容に合わせて必要な項目だけを表示します。</p>
+        <div class="kx-cards" role="radiogroup" aria-label="お問い合わせ種別">
+          <label class="kx-card"><input type="radio" name="inquiry_type" value="リフォーム" required><span class="kx-card-t">リフォーム</span><span class="kx-card-d">住宅・店舗・法人</span></label>
+          <label class="kx-card"><input type="radio" name="inquiry_type" value="解体"><span class="kx-card-t">解体</span><span class="kx-card-d">建物・部分解体</span></label>
+          <label class="kx-card"><input type="radio" name="inquiry_type" value="工具"><span class="kx-card-t">工具</span><span class="kx-card-d">見積・調達相談</span></label>
+          <label class="kx-card"><input type="radio" name="inquiry_type" value="電子部品"><span class="kx-card-t">電子部品</span><span class="kx-card-d">EOL・調達相談</span></label>
+        </div>
+      </div>
+      <div class="kx-step" data-step="2">
+        <h3 class="kx-step-title">お客様情報</h3>
+        <p class="kx-step-desc">ご連絡先をご記入ください。折り返しのご連絡に使用します。</p>
+        <div class="kx-only" data-only="リフォーム">
+          <fieldset class="kx-fieldset">
+            <legend class="kx-legend">お客様区分<span class="kx-req">必須</span></legend>
+            <div class="kx-choice-grid">
+              <label class="kx-choice"><input type="radio" name="customer_type" value="個人" data-required="1">個人のお客様</label>
+              <label class="kx-choice"><input type="radio" name="customer_type" value="法人">法人のお客様</label>
+            </div>
+          </fieldset>
+          <div class="kx-subsection" data-when="法人">
+          <div class="kx-field">
+            <label for="kx-company">会社名<span class="kx-req">必須</span></label>
+            <input id="kx-company" name="company" type="text" autocomplete="organization" data-required="1">
           </div>
-        </fieldset>
-
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-name">お名前<span class="kx-req">必須</span></label>
-          <input id="kx-name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="kx-field">
-          <label for="kx-email">メールアドレス<span class="kx-req">必須</span></label>
-          <input id="kx-email" name="email" type="email" autocomplete="email" required>
-          <p class="kx-error-msg"></p>
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-tel">電話番号<span class="kx-opt">任意</span></label>
-          <input id="kx-tel" name="tel" type="tel" autocomplete="tel">
-          <p class="kx-hint">お電話での折り返しをご希望の場合はご記入ください。</p>
-        </div>
-      <div class="kx-section" data-type="リフォーム">
-        <fieldset class="kx-fieldset">
-          <legend class="kx-legend">お客様区分<span class="kx-req">必須</span></legend>
-          <div class="kx-choice-grid">
-            <label class="kx-choice"><input type="radio" name="customer_type" value="個人" data-required="1">個人のお客様</label>
-            <label class="kx-choice"><input type="radio" name="customer_type" value="法人">法人のお客様</label>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-department">部署名</label>
+            <input id="kx-department" name="department" type="text" autocomplete="organization-title">
           </div>
-        </fieldset>
-        <div class="kx-subsection" data-when="法人">
-        <div class="kx-field">
-          <label for="kx-company">会社名<span class="kx-req">必須</span></label>
-          <input id="kx-company" name="company" type="text" autocomplete="organization" data-required="1">
+          <div class="kx-field">
+            <label for="kx-position">役職</label>
+            <input id="kx-position" name="position" type="text">
+          </div>
+          </div>
+          </div>
         </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-department">部署名<span class="kx-opt">任意</span></label>
-          <input id="kx-department" name="department" type="text" autocomplete="organization-title">
+                  <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-name">お名前<span class="kx-req">必須</span></label>
+            <input id="kx-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="kx-field">
+            <label for="kx-email">メールアドレス<span class="kx-req">必須</span></label>
+            <input id="kx-email" name="email" type="email" autocomplete="email" required>
+            <p class="kx-error-msg"></p>
+          </div>
+          </div>
+          <div class="kx-field">
+            <label for="kx-tel">電話番号</label>
+            <input id="kx-tel" name="tel" type="tel" autocomplete="tel">
+            <p class="kx-hint">お電話での折り返しをご希望の場合はご記入ください。</p>
+          </div>
+        <div class="kx-only" data-only="解体">
+          <div class="kx-field">
+            <label for="kx-company">会社名</label>
+            <input id="kx-company" name="company" type="text" autocomplete="organization">
+            <p class="kx-hint">個人のお客様は空欄で構いません。</p>
+          </div>
         </div>
-        <div class="kx-field">
-          <label for="kx-position">役職<span class="kx-opt">任意</span></label>
-          <input id="kx-position" name="position" type="text">
+        <div class="kx-only" data-only="工具">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-company">会社名</label>
+            <input id="kx-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="kx-field">
+            <label for="kx-department">部署名</label>
+            <input id="kx-department" name="department" type="text">
+          </div>
+          </div>
         </div>
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-kana">フリガナ<span class="kx-opt">任意</span></label>
-          <input id="kx-kana" name="kana" type="text">
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-postal_code">郵便番号<span class="kx-opt">任意</span></label>
-          <input id="kx-postal_code" name="postal_code" type="text" autocomplete="postal-code" placeholder="例）443-0104">
-        </div>
-        <div class="kx-field">
-          <label for="kx-prefecture">都道府県<span class="kx-opt">任意</span></label>
-          <select id="kx-prefecture" name="prefecture"><option value="">選択してください</option><option value="北海道">北海道</option><option value="青森県">青森県</option><option value="岩手県">岩手県</option><option value="宮城県">宮城県</option><option value="秋田県">秋田県</option><option value="山形県">山形県</option><option value="福島県">福島県</option><option value="茨城県">茨城県</option><option value="栃木県">栃木県</option><option value="群馬県">群馬県</option><option value="埼玉県">埼玉県</option><option value="千葉県">千葉県</option><option value="東京都">東京都</option><option value="神奈川県">神奈川県</option><option value="新潟県">新潟県</option><option value="富山県">富山県</option><option value="石川県">石川県</option><option value="福井県">福井県</option><option value="山梨県">山梨県</option><option value="長野県">長野県</option><option value="岐阜県">岐阜県</option><option value="静岡県">静岡県</option><option value="愛知県">愛知県</option><option value="三重県">三重県</option><option value="滋賀県">滋賀県</option><option value="京都府">京都府</option><option value="大阪府">大阪府</option><option value="兵庫県">兵庫県</option><option value="奈良県">奈良県</option><option value="和歌山県">和歌山県</option><option value="鳥取県">鳥取県</option><option value="島根県">島根県</option><option value="岡山県">岡山県</option><option value="広島県">広島県</option><option value="山口県">山口県</option><option value="徳島県">徳島県</option><option value="香川県">香川県</option><option value="愛媛県">愛媛県</option><option value="高知県">高知県</option><option value="福岡県">福岡県</option><option value="佐賀県">佐賀県</option><option value="長崎県">長崎県</option><option value="熊本県">熊本県</option><option value="大分県">大分県</option><option value="宮崎県">宮崎県</option><option value="鹿児島県">鹿児島県</option><option value="沖縄県">沖縄県</option></select>
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-city">市区町村<span class="kx-opt">任意</span></label>
-          <input id="kx-city" name="city" type="text" autocomplete="address-level2">
-        </div>
-        <div class="kx-field">
-          <label for="kx-address">番地・建物名<span class="kx-opt">任意</span></label>
-          <input id="kx-address" name="address" type="text" autocomplete="address-line1">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-building_type">建物種別<span class="kx-opt">任意</span></label>
-          <select id="kx-building_type" name="building_type"><option value="">選択してください</option><option value="戸建住宅">戸建住宅</option><option value="マンション">マンション</option><option value="アパート">アパート</option><option value="店舗">店舗</option><option value="事務所">事務所</option><option value="オフィスビル">オフィスビル</option><option value="工場">工場</option><option value="倉庫">倉庫</option><option value="商業施設">商業施設</option><option value="医療施設">医療施設</option><option value="介護施設">介護施設</option><option value="公共施設">公共施設</option><option value="学校">学校</option><option value="ホテル">ホテル</option><option value="その他">その他</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-ownership">所有区分<span class="kx-opt">任意</span></label>
-          <select id="kx-ownership" name="ownership"><option value="">選択してください</option><option value="自己所有">自己所有</option><option value="賃貸">賃貸</option><option value="管理物件">管理物件</option><option value="その他">その他</option></select>
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-building_age">築年数<span class="kx-opt">任意</span></label>
-          <input id="kx-building_age" name="building_age" type="text" placeholder="例）約20年">
-        </div>
-        <div class="kx-field">
-          <label for="kx-work_area">工事箇所<span class="kx-opt">任意</span></label>
-          <input id="kx-work_area" name="work_area" type="text" placeholder="例）外壁・屋根・浴室">
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-work_content">希望工事内容<span class="kx-opt">任意</span></label>
-          <input id="kx-work_content" name="work_content" type="text" placeholder="例）外壁塗装、内装リフォーム など">
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-desired_time">希望時期<span class="kx-opt">任意</span></label>
-          <input id="kx-desired_time" name="desired_time" type="text" placeholder="例）3か月以内">
-        </div>
-        <div class="kx-field">
-          <label for="kx-budget">ご予算<span class="kx-opt">任意</span></label>
-          <input id="kx-budget" name="budget" type="text" placeholder="例）100万円程度">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-survey_request">現地調査の希望<span class="kx-opt">任意</span></label>
-          <select id="kx-survey_request" name="survey_request"><option value="">選択してください</option><option value="希望する">希望する</option><option value="希望しない">希望しない</option><option value="未定">未定</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-survey_date">現地調査の希望日<span class="kx-opt">任意</span></label>
-          <input id="kx-survey_date" name="survey_date" type="date">
-        </div>
+        <div class="kx-only" data-only="電子部品">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-company">会社名</label>
+            <input id="kx-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="kx-field">
+            <label for="kx-department">部署名</label>
+            <input id="kx-department" name="department" type="text">
+          </div>
+          </div>
         </div>
       </div>
-      <div class="kx-section" data-type="解体">
-        <div class="kx-field">
-          <label for="kx-company">会社名<span class="kx-opt">任意</span></label>
-          <input id="kx-company" name="company" type="text" autocomplete="organization">
-          <p class="kx-hint">個人のお客様は空欄で構いません。</p>
+      <div class="kx-step" data-step="3">
+        <h3 class="kx-step-title">相談内容</h3>
+        <p class="kx-step-desc">分かる範囲で構いません。詳しい条件は次のステップで入力できます。</p>
+        <div class="kx-only" data-only="リフォーム">
+          <div class="kx-field">
+            <label for="kx-building_type">建物種別</label>
+            <select id="kx-building_type" name="building_type"><option value="">選択してください</option><option value="戸建住宅">戸建住宅</option><option value="マンション">マンション</option><option value="アパート">アパート</option><option value="店舗">店舗</option><option value="事務所">事務所</option><option value="オフィスビル">オフィスビル</option><option value="工場">工場</option><option value="倉庫">倉庫</option><option value="商業施設">商業施設</option><option value="医療施設">医療施設</option><option value="介護施設">介護施設</option><option value="公共施設">公共施設</option><option value="学校">学校</option><option value="ホテル">ホテル</option><option value="その他">その他</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-work_content">希望工事内容</label>
+            <input id="kx-work_content" name="work_content" type="text" placeholder="例）外壁塗装、内装リフォーム など">
+          </div>
+          <div class="kx-field">
+            <label for="kx-work_area">工事箇所</label>
+            <input id="kx-work_area" name="work_area" type="text" placeholder="例）外壁・屋根・浴室">
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-desired_time">希望時期</label>
+            <input id="kx-desired_time" name="desired_time" type="text" placeholder="例）3か月以内">
+          </div>
+          <div class="kx-field">
+            <label for="kx-budget">ご予算</label>
+            <input id="kx-budget" name="budget" type="text" placeholder="例）100万円程度">
+          </div>
+          </div>
         </div>
-        <div class="kx-field">
-          <label for="kx-site_address">現場住所<span class="kx-opt">任意</span></label>
-          <input id="kx-site_address" name="site_address" type="text" autocomplete="street-address">
+        <div class="kx-only" data-only="解体">
+          <div class="kx-field">
+            <label for="kx-site_address">現場住所</label>
+            <input id="kx-site_address" name="site_address" type="text" autocomplete="street-address">
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-building_type">建物種別</label>
+            <select id="kx-building_type" name="building_type"><option value="">選択してください</option><option value="戸建住宅">戸建住宅</option><option value="マンション">マンション</option><option value="アパート">アパート</option><option value="店舗">店舗</option><option value="事務所">事務所</option><option value="オフィスビル">オフィスビル</option><option value="工場">工場</option><option value="倉庫">倉庫</option><option value="商業施設">商業施設</option><option value="医療施設">医療施設</option><option value="介護施設">介護施設</option><option value="公共施設">公共施設</option><option value="学校">学校</option><option value="ホテル">ホテル</option><option value="その他">その他</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-structure">建物構造</label>
+            <select id="kx-structure" name="structure"><option value="">選択してください</option><option value="木造">木造</option><option value="鉄骨造">鉄骨造</option><option value="鉄筋コンクリート造">鉄筋コンクリート造</option><option value="鉄骨鉄筋コンクリート造">鉄骨鉄筋コンクリート造</option><option value="その他">その他</option></select>
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-floor_area">延床面積</label>
+            <input id="kx-floor_area" name="floor_area" type="text" placeholder="例）100㎡">
+          </div>
+          <div class="kx-field">
+            <label for="kx-desired_time">希望解体時期</label>
+            <input id="kx-desired_time" name="desired_time" type="text" placeholder="例）年内">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-residual_items">残置物の有無</label>
+            <select id="kx-residual_items" name="residual_items"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option><option value="不明">不明</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-asbestos">アスベストの懸念</label>
+            <select id="kx-asbestos" name="asbestos"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option><option value="不明">不明</option></select>
+          </div>
+          </div>
         </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-building_type">建物種別<span class="kx-opt">任意</span></label>
-          <select id="kx-building_type" name="building_type"><option value="">選択してください</option><option value="戸建住宅">戸建住宅</option><option value="マンション">マンション</option><option value="アパート">アパート</option><option value="店舗">店舗</option><option value="事務所">事務所</option><option value="オフィスビル">オフィスビル</option><option value="工場">工場</option><option value="倉庫">倉庫</option><option value="商業施設">商業施設</option><option value="医療施設">医療施設</option><option value="介護施設">介護施設</option><option value="公共施設">公共施設</option><option value="学校">学校</option><option value="ホテル">ホテル</option><option value="その他">その他</option></select>
+        <div class="kx-only" data-only="工具">
+          <p class="kx-notice">メーカー・製品名・数量だけでもお問い合わせいただけます。型番が分からない場合は空欄でも構いません。</p>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-maker">メーカー名</label>
+            <input id="kx-maker" name="maker" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-product_name">製品名</label>
+            <input id="kx-product_name" name="product_name" type="text">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-model_number">型番</label>
+            <input id="kx-model_number" name="model_number" type="text">
+            <p class="kx-hint">分からない場合は空欄で構いません。</p>
+          </div>
+          <div class="kx-field">
+            <label for="kx-quantity">数量</label>
+            <input id="kx-quantity" name="quantity" type="text" placeholder="例）5本">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-usage">用途</label>
+            <input id="kx-usage" name="usage" type="text" placeholder="例）金属研磨、バリ取り">
+          </div>
+          <div class="kx-field">
+            <label for="kx-desired_delivery">希望納期</label>
+            <input id="kx-desired_delivery" name="desired_delivery" type="text">
+          </div>
+          </div>
         </div>
-        <div class="kx-field">
-          <label for="kx-structure">建物構造<span class="kx-opt">任意</span></label>
-          <select id="kx-structure" name="structure"><option value="">選択してください</option><option value="木造">木造</option><option value="鉄骨造">鉄骨造</option><option value="鉄筋コンクリート造">鉄筋コンクリート造</option><option value="鉄骨鉄筋コンクリート造">鉄骨鉄筋コンクリート造</option><option value="その他">その他</option></select>
+        <div class="kx-only" data-only="電子部品">
+          <p class="kx-notice">入手困難品・生産終了（EOL）部品もご相談ください。<br>メーカー・型番・数量だけでもお問い合わせいただけます。</p>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-maker">メーカー名</label>
+            <input id="kx-maker" name="maker" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-model_number">型番</label>
+            <input id="kx-model_number" name="model_number" type="text">
+            <p class="kx-hint">分からない場合は品名・用途だけでも構いません。</p>
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-part_name">品名</label>
+            <input id="kx-part_name" name="part_name" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-quantity">数量</label>
+            <input id="kx-quantity" name="quantity" type="text">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-usage">用途</label>
+            <input id="kx-usage" name="usage" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-desired_delivery">希望納期</label>
+            <input id="kx-desired_delivery" name="desired_delivery" type="text">
+          </div>
+          </div>
         </div>
+          <div class="kx-field">
+            <label for="kx-message">お問い合わせ内容<span class="kx-req">必須</span></label>
+            <textarea id="kx-message" name="message" rows="5" required></textarea>
+            <p class="kx-hint">ご相談内容が決まっていなくても、気になる点をそのままご記入ください。</p>
+          </div>
+      </div>
+      <div class="kx-step" data-step="4">
+        <h3 class="kx-step-title">詳細条件</h3>
+        <p class="kx-step-desc">以下はすべて任意です。分かる範囲でご記入ください。入力がなくても送信できます。</p>
+        <div class="kx-only" data-only="リフォーム">
+          <details class="kx-acc"><summary>住所・現地調査について</summary><div class="kx-acc-body">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-postal_code">郵便番号</label>
+            <input id="kx-postal_code" name="postal_code" type="text" autocomplete="postal-code" placeholder="例）443-0104">
+          </div>
+          <div class="kx-field">
+            <label for="kx-prefecture">都道府県</label>
+            <select id="kx-prefecture" name="prefecture"><option value="">選択してください</option><option value="北海道">北海道</option><option value="青森県">青森県</option><option value="岩手県">岩手県</option><option value="宮城県">宮城県</option><option value="秋田県">秋田県</option><option value="山形県">山形県</option><option value="福島県">福島県</option><option value="茨城県">茨城県</option><option value="栃木県">栃木県</option><option value="群馬県">群馬県</option><option value="埼玉県">埼玉県</option><option value="千葉県">千葉県</option><option value="東京都">東京都</option><option value="神奈川県">神奈川県</option><option value="新潟県">新潟県</option><option value="富山県">富山県</option><option value="石川県">石川県</option><option value="福井県">福井県</option><option value="山梨県">山梨県</option><option value="長野県">長野県</option><option value="岐阜県">岐阜県</option><option value="静岡県">静岡県</option><option value="愛知県">愛知県</option><option value="三重県">三重県</option><option value="滋賀県">滋賀県</option><option value="京都府">京都府</option><option value="大阪府">大阪府</option><option value="兵庫県">兵庫県</option><option value="奈良県">奈良県</option><option value="和歌山県">和歌山県</option><option value="鳥取県">鳥取県</option><option value="島根県">島根県</option><option value="岡山県">岡山県</option><option value="広島県">広島県</option><option value="山口県">山口県</option><option value="徳島県">徳島県</option><option value="香川県">香川県</option><option value="愛媛県">愛媛県</option><option value="高知県">高知県</option><option value="福岡県">福岡県</option><option value="佐賀県">佐賀県</option><option value="長崎県">長崎県</option><option value="熊本県">熊本県</option><option value="大分県">大分県</option><option value="宮崎県">宮崎県</option><option value="鹿児島県">鹿児島県</option><option value="沖縄県">沖縄県</option></select>
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-city">市区町村</label>
+            <input id="kx-city" name="city" type="text" autocomplete="address-level2">
+          </div>
+          <div class="kx-field">
+            <label for="kx-address">番地・建物名</label>
+            <input id="kx-address" name="address" type="text" autocomplete="address-line1">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-ownership">所有区分</label>
+            <select id="kx-ownership" name="ownership"><option value="">選択してください</option><option value="自己所有">自己所有</option><option value="賃貸">賃貸</option><option value="管理物件">管理物件</option><option value="その他">その他</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-building_age">築年数</label>
+            <input id="kx-building_age" name="building_age" type="text" placeholder="例）約20年">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-survey_request">現地調査の希望</label>
+            <select id="kx-survey_request" name="survey_request"><option value="">選択してください</option><option value="希望する">希望する</option><option value="希望しない">希望しない</option><option value="未定">未定</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-survey_date">現地調査の希望日</label>
+            <input id="kx-survey_date" name="survey_date" type="date">
+          </div>
+          </div>
+          </div></details>
         </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-floors">階数<span class="kx-opt">任意</span></label>
-          <input id="kx-floors" name="floors" type="text" placeholder="例）2階建">
+        <div class="kx-only" data-only="解体">
+          <details class="kx-acc"><summary>現場・調査の詳細</summary><div class="kx-acc-body">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-floors">階数</label>
+            <input id="kx-floors" name="floors" type="text" placeholder="例）2階建">
+          </div>
+          <div class="kx-field">
+            <label for="kx-land_area">敷地面積</label>
+            <input id="kx-land_area" name="land_area" type="text" placeholder="例）150㎡">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-building_age">築年数</label>
+            <input id="kx-building_age" name="building_age" type="text" placeholder="例）約35年">
+          </div>
+          <div class="kx-field">
+            <label for="kx-demolition_target">解体対象</label>
+            <input id="kx-demolition_target" name="demolition_target" type="text" placeholder="例）住宅本体、物置、塀">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-survey_request">現地調査の希望</label>
+            <select id="kx-survey_request" name="survey_request"><option value="">選択してください</option><option value="希望する">希望する</option><option value="希望しない">希望しない</option><option value="未定">未定</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-survey_date">現地調査の希望日</label>
+            <input id="kx-survey_date" name="survey_date" type="date">
+          </div>
+          </div>
+          <div class="kx-field">
+            <label for="kx-budget">ご予算</label>
+            <input id="kx-budget" name="budget" type="text">
+          </div>
+          </div></details>
         </div>
-        <div class="kx-field">
-          <label for="kx-building_age">築年数<span class="kx-opt">任意</span></label>
-          <input id="kx-building_age" name="building_age" type="text" placeholder="例）約35年">
+        <div class="kx-only" data-only="工具">
+          <details class="kx-acc"><summary>希望条件を詳しく入力</summary><div class="kx-acc-body">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-desired_price">希望価格</label>
+            <input id="kx-desired_price" name="desired_price" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-alternative_ok">代替品の可否</label>
+            <select id="kx-alternative_ok" name="alternative_ok"><option value="">選択してください</option><option value="可">可</option><option value="不可">不可</option><option value="要相談">要相談</option></select>
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-new_used">新品／中古</label>
+            <select id="kx-new_used" name="new_used"><option value="">選択してください</option><option value="新品">新品</option><option value="中古">中古</option><option value="どちらでも">どちらでも</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-continuous_purchase">継続購入の予定</label>
+            <select id="kx-continuous_purchase" name="continuous_purchase"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option><option value="未定">未定</option></select>
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-monthly_usage">月間使用量</label>
+            <input id="kx-monthly_usage" name="monthly_usage" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-annual_usage">年間使用量</label>
+            <input id="kx-annual_usage" name="annual_usage" type="text">
+          </div>
+          </div>
+          </div></details>
         </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-floor_area">延床面積<span class="kx-opt">任意</span></label>
-          <input id="kx-floor_area" name="floor_area" type="text" placeholder="例）100㎡">
-        </div>
-        <div class="kx-field">
-          <label for="kx-land_area">敷地面積<span class="kx-opt">任意</span></label>
-          <input id="kx-land_area" name="land_area" type="text" placeholder="例）150㎡">
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-demolition_target">解体対象<span class="kx-opt">任意</span></label>
-          <input id="kx-demolition_target" name="demolition_target" type="text" placeholder="例）住宅本体、物置、塀 など">
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-residual_items">残置物の有無<span class="kx-opt">任意</span></label>
-          <select id="kx-residual_items" name="residual_items"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option><option value="不明">不明</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-asbestos">アスベストの懸念<span class="kx-opt">任意</span></label>
-          <select id="kx-asbestos" name="asbestos"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option><option value="不明">不明</option></select>
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-desired_time">希望解体時期<span class="kx-opt">任意</span></label>
-          <input id="kx-desired_time" name="desired_time" type="text" placeholder="例）年内">
-        </div>
-        <div class="kx-field">
-          <label for="kx-budget">ご予算<span class="kx-opt">任意</span></label>
-          <input id="kx-budget" name="budget" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-survey_request">現地調査の希望<span class="kx-opt">任意</span></label>
-          <select id="kx-survey_request" name="survey_request"><option value="">選択してください</option><option value="希望する">希望する</option><option value="希望しない">希望しない</option><option value="未定">未定</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-survey_date">現地調査の希望日<span class="kx-opt">任意</span></label>
-          <input id="kx-survey_date" name="survey_date" type="date">
-        </div>
+        <div class="kx-only" data-only="電子部品">
+          <details class="kx-acc"><summary>調達条件</summary><div class="kx-acc-body">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-monthly_usage">月間使用量</label>
+            <input id="kx-monthly_usage" name="monthly_usage" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-annual_usage">年間使用量</label>
+            <input id="kx-annual_usage" name="annual_usage" type="text">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-desired_price">希望価格</label>
+            <input id="kx-desired_price" name="desired_price" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-mounted_product">搭載製品</label>
+            <input id="kx-mounted_product" name="mounted_product" type="text">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-eol">EOL（生産終了）</label>
+            <select id="kx-eol" name="eol"><option value="">選択してください</option><option value="該当（EOL品）">該当（EOL品）</option><option value="EOL懸念あり">EOL懸念あり</option><option value="該当なし">該当なし</option><option value="不明">不明</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-alternative_ok">代替品の可否</label>
+            <select id="kx-alternative_ok" name="alternative_ok"><option value="">選択してください</option><option value="可">可</option><option value="不可">不可</option><option value="要相談">要相談</option></select>
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-maker_designation">メーカー指定</label>
+            <select id="kx-maker_designation" name="maker_designation"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-lot_designation">ロット指定</label>
+            <input id="kx-lot_designation" name="lot_designation" type="text">
+          </div>
+          </div>
+          <div class="kx-field">
+            <label for="kx-datecode_designation">DateCode指定</label>
+            <input id="kx-datecode_designation" name="datecode_designation" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-new_unused">新品未使用条件</label>
+            <select id="kx-new_unused" name="new_unused"><option value="">選択してください</option><option value="新品未使用が必須">新品未使用が必須</option><option value="不問">不問</option></select>
+          </div>
+          </div></details>
+          <details class="kx-acc"><summary>品質・認証条件</summary><div class="kx-acc-body">
+          <div class="kx-field">
+            <label for="kx-quality_condition">品質条件</label>
+            <input id="kx-quality_condition" name="quality_condition" type="text" placeholder="例）外観・電気的特性">
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-rohs">RoHS要否</label>
+            <select id="kx-rohs" name="rohs"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-coc">CoC要否</label>
+            <select id="kx-coc" name="coc"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
+          </div>
+          </div>
+          <div class="kx-field">
+            <label for="kx-traceability">トレーサビリティ要否</label>
+            <select id="kx-traceability" name="traceability"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
+          </div>
+          </div></details>
         </div>
       </div>
-      <div class="kx-section" data-type="工具">
-        <p class="kx-notice">メーカー・製品名・数量だけでもお問い合わせいただけます。型番が分からない場合もお気軽にどうぞ。</p>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-company">会社名<span class="kx-opt">任意</span></label>
-          <input id="kx-company" name="company" type="text" autocomplete="organization">
-        </div>
-        <div class="kx-field">
-          <label for="kx-department">部署名<span class="kx-opt">任意</span></label>
-          <input id="kx-department" name="department" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-maker">メーカー名<span class="kx-opt">任意</span></label>
-          <input id="kx-maker" name="maker" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-product_name">製品名<span class="kx-opt">任意</span></label>
-          <input id="kx-product_name" name="product_name" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-model_number">型番<span class="kx-opt">任意</span></label>
-          <input id="kx-model_number" name="model_number" type="text">
-          <p class="kx-hint">分からない場合は空欄で構いません。</p>
-        </div>
-        <div class="kx-field">
-          <label for="kx-quantity">数量<span class="kx-opt">任意</span></label>
-          <input id="kx-quantity" name="quantity" type="text" placeholder="例）5本">
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-usage">用途<span class="kx-opt">任意</span></label>
-          <input id="kx-usage" name="usage" type="text" placeholder="例）金属研磨、バリ取り など">
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-desired_delivery">希望納期<span class="kx-opt">任意</span></label>
-          <input id="kx-desired_delivery" name="desired_delivery" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-desired_price">希望価格<span class="kx-opt">任意</span></label>
-          <input id="kx-desired_price" name="desired_price" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-alternative_ok">代替品の可否<span class="kx-opt">任意</span></label>
-          <select id="kx-alternative_ok" name="alternative_ok"><option value="">選択してください</option><option value="可">可</option><option value="不可">不可</option><option value="要相談">要相談</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-new_used">新品／中古<span class="kx-opt">任意</span></label>
-          <select id="kx-new_used" name="new_used"><option value="">選択してください</option><option value="新品">新品</option><option value="中古">中古</option><option value="どちらでも">どちらでも</option></select>
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-continuous_purchase">継続購入の予定<span class="kx-opt">任意</span></label>
-          <select id="kx-continuous_purchase" name="continuous_purchase"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option><option value="未定">未定</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-monthly_usage">月間使用量<span class="kx-opt">任意</span></label>
-          <input id="kx-monthly_usage" name="monthly_usage" type="text">
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-annual_usage">年間使用量<span class="kx-opt">任意</span></label>
-          <input id="kx-annual_usage" name="annual_usage" type="text">
-        </div>
-      </div>
-      <div class="kx-section" data-type="電子部品">
-        <p class="kx-notice">入手困難品・生産終了（EOL）部品もご相談ください。<br>メーカー・型番・数量だけでもお問い合わせいただけます。</p>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-company">会社名<span class="kx-opt">任意</span></label>
-          <input id="kx-company" name="company" type="text" autocomplete="organization">
-        </div>
-        <div class="kx-field">
-          <label for="kx-department">部署名<span class="kx-opt">任意</span></label>
-          <input id="kx-department" name="department" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-maker">メーカー名<span class="kx-opt">任意</span></label>
-          <input id="kx-maker" name="maker" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-model_number">型番<span class="kx-opt">任意</span></label>
-          <input id="kx-model_number" name="model_number" type="text">
-          <p class="kx-hint">分からない場合は品名・用途だけでも構いません。</p>
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-part_name">品名<span class="kx-opt">任意</span></label>
-          <input id="kx-part_name" name="part_name" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-quantity">数量<span class="kx-opt">任意</span></label>
-          <input id="kx-quantity" name="quantity" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-monthly_usage">月間使用量<span class="kx-opt">任意</span></label>
-          <input id="kx-monthly_usage" name="monthly_usage" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-annual_usage">年間使用量<span class="kx-opt">任意</span></label>
-          <input id="kx-annual_usage" name="annual_usage" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-desired_delivery">希望納期<span class="kx-opt">任意</span></label>
-          <input id="kx-desired_delivery" name="desired_delivery" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-desired_price">希望価格<span class="kx-opt">任意</span></label>
-          <input id="kx-desired_price" name="desired_price" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-usage">用途<span class="kx-opt">任意</span></label>
-          <input id="kx-usage" name="usage" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-mounted_product">搭載製品<span class="kx-opt">任意</span></label>
-          <input id="kx-mounted_product" name="mounted_product" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-eol">EOL（生産終了）<span class="kx-opt">任意</span></label>
-          <select id="kx-eol" name="eol"><option value="">選択してください</option><option value="該当（EOL品）">該当（EOL品）</option><option value="EOL懸念あり">EOL懸念あり</option><option value="該当なし">該当なし</option><option value="不明">不明</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-alternative_ok">代替品の可否<span class="kx-opt">任意</span></label>
-          <select id="kx-alternative_ok" name="alternative_ok"><option value="">選択してください</option><option value="可">可</option><option value="不可">不可</option><option value="要相談">要相談</option></select>
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-maker_designation">メーカー指定<span class="kx-opt">任意</span></label>
-          <select id="kx-maker_designation" name="maker_designation"><option value="">選択してください</option><option value="あり">あり</option><option value="なし">なし</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-lot_designation">ロット指定<span class="kx-opt">任意</span></label>
-          <input id="kx-lot_designation" name="lot_designation" type="text">
-        </div>
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-datecode_designation">DateCode指定<span class="kx-opt">任意</span></label>
-          <input id="kx-datecode_designation" name="datecode_designation" type="text">
-        </div>
-        <div class="kx-field">
-          <label for="kx-new_unused">新品未使用条件<span class="kx-opt">任意</span></label>
-          <select id="kx-new_unused" name="new_unused"><option value="">選択してください</option><option value="新品未使用が必須">新品未使用が必須</option><option value="不問">不問</option></select>
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-quality_condition">品質条件<span class="kx-opt">任意</span></label>
-          <input id="kx-quality_condition" name="quality_condition" type="text" placeholder="例）外観・電気的特性 など">
-        </div>
-        <div class="kx-grid2">
-        <div class="kx-field">
-          <label for="kx-rohs">RoHS要否<span class="kx-opt">任意</span></label>
-          <select id="kx-rohs" name="rohs"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
-        </div>
-        <div class="kx-field">
-          <label for="kx-coc">CoC要否<span class="kx-opt">任意</span></label>
-          <select id="kx-coc" name="coc"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
-        </div>
-        </div>
-        <div class="kx-field">
-          <label for="kx-traceability">トレーサビリティ要否<span class="kx-opt">任意</span></label>
-          <select id="kx-traceability" name="traceability"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
-        </div>
-      </div>
-        <div class="kx-field">
-          <label for="kx-message">お問い合わせ内容<span class="kx-req">必須</span></label>
-          <textarea id="kx-message" name="message" rows="5" required></textarea>
-          <p class="kx-hint">ご相談内容が決まっていなくても、気になる点をそのままご記入ください。</p>
-        </div>
+      <div class="kx-step" data-step="5">
+        <h3 class="kx-step-title">入力内容の確認</h3>
+        <p class="kx-step-desc">内容をご確認のうえ、送信してください。修正する場合は各項目の「修正する」からお戻りいただけます。</p>
+        <div id="kx-review"></div>
         <label class="kx-consent">
           <input type="checkbox" name="privacy_agree" value="同意する" required>
           <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意します<span class="kx-req">必須</span></span>
         </label>
+      </div>
 
-        <!-- 計測用（自動入力） -->
+        <div class="kx-nav">
+          <button type="button" class="kx-back btn btn-w" hidden>戻る</button>
+          <button type="button" class="kx-next btn btn-o">次へ</button>
+          <button type="submit" class="kx-submit btn btn-o" hidden>お問い合わせを送信する</button>
+        </div>
+        <div id="kx-status" class="kx-status" role="status" aria-live="polite"></div>
+
         <input type="hidden" name="source" value="">
         <input type="hidden" name="referrer" value="">
         <input type="hidden" name="utm_source" value="">
@@ -514,10 +561,14 @@
         <input type="hidden" name="utm_campaign" value="">
         <input type="hidden" name="page_referrer" value="">
         <input type="hidden" name="submitted_url" value="">
-
-        <button type="submit" class="kx-submit btn btn-o">送信する</button>
-        <div id="kx-status" class="kx-status" role="status" aria-live="polite"></div>
       </form>
+
+      <div id="kx-complete" class="kx-complete" hidden>
+        <div class="kx-complete-icon" aria-hidden="true">✓</div>
+        <h3>お問い合わせありがとうございます</h3>
+        <p>内容を確認のうえ、担当者よりご連絡いたします。<br>通常2〜3営業日以内にご返信いたします。</p>
+        <div class="kx-id-box" id="kx-complete-id" hidden>お問い合わせ番号：<b></b></div>
+      </div>
 
       <div style="text-align:center;margin-bottom:24px;">
         <span class="eyebrow">PHONE</span>

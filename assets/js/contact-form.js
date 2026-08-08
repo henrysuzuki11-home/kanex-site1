@@ -10,7 +10,7 @@
 (function () {
   'use strict';
   var GAS_URL = 'https://script.google.com/macros/s/AKfycbxcyXPk6BvyTMVQ37slhJDx3_gP5K_9rUlRp95JbxRC9zhU0uSrxnTK5AjUCdmMd4lc/exec';
-  var DEBUG = false; // 診断ログ（Console）。個人情報を含むため本番は false。再診断時のみ一時的に true。
+  var DEBUG = false; // 診断ログ（Console・個人情報は出力しない）。再診断時のみ一時的に true。
 
   var form = document.getElementById('kx-inquiry-form');
   if (!form) return;
@@ -266,35 +266,48 @@
     fd.forEach(function (v, k) { body.append(toCamel(k), v); });
 
     if (DEBUG) {
-      console.log('[KX] 送信開始 →', GAS_URL);
-      console.log('[KX] payload:', body.toString()); // ※診断用。個人情報を含むため確認後 DEBUG=false に。
+      // 個人情報（氏名/メール/電話/自己PR等）は出力しない
+      console.log('KANEX submit start');
+      console.log('inquiryType', body.get('inquiryType'));
+      console.log('desiredPosition', body.get('desiredPosition'));
     }
 
     fetch(GAS_URL, { method: 'POST', body: body }) // Content-Type は自動で application/x-www-form-urlencoded（simple request＝preflightなし）
       .then(function (res) {
-        if (DEBUG) console.log('[KX] HTTP status:', res.status, res.ok);
+        if (DEBUG) console.log('[KX] HTTP status', res.status, res.ok);
         return res.text().then(function (text) { return { ok: res.ok, text: text }; });
       })
       .then(function (r) {
-        if (DEBUG) console.log('[KX] response text:', r.text);
+        if (DEBUG) console.log('Apps Script response', r.text);
         var j = null;
         try { j = JSON.parse(r.text); } catch (err) { if (DEBUG) console.warn('[KX] JSON parse失敗', err); }
-        var success = !!(j && (j.success === true || j.result === 'success' || j.inquiryId || j.id));
-        if (!r.ok || !success) throw new Error('GAS応答が成功ではありません: ' + r.text);
-        var id = (j && (j.inquiryId || j.id || j.inquiry_id)) || '';
-        var type = getSelectedType();
-        try {
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', 'form_submit', { inquiry_type: type, page_path: location.pathname });
-            window.gtag('event', 'generate_lead', { inquiry_type: type });
-          }
-        } catch (e2) {}
-        showComplete(id);
+        var success = !!(j && (j.success === true || j.result === 'success'));
+        if (success) {
+          var id = (j && (j.inquiryId || j.id || j.inquiry_id)) || '';
+          var type = getSelectedType();
+          try {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'form_submit', { inquiry_type: type, page_path: location.pathname });
+              window.gtag('event', 'generate_lead', { inquiry_type: type });
+            }
+          } catch (e2) {}
+          showComplete(id);
+          return;
+        }
+        // GAS が返した入力チェックメッセージはそのまま表示（通信は成立している）
+        if (r.ok && j && j.success === false && j.message) {
+          statusEl.className = 'kx-status kx-err';
+          statusEl.textContent = String(j.message);
+          statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        // それ以外（HTTP異常・応答不正）は通信エラー扱い
+        throw new Error('unexpected response: ' + r.text);
       })
       .catch(function (err) {
         if (DEBUG) console.error('[KX] 送信エラー:', err);
         statusEl.className = 'kx-status kx-err';
-        statusEl.innerHTML = '送信できませんでした。入力内容をご確認のうえ、再度お試しください。<br>お急ぎの場合はお電話（<a href="tel:0533581212" style="color:inherit;font-weight:700;">0533-58-1212</a>）でも承ります。';
+        statusEl.innerHTML = '送信できませんでした。時間をおいて再度お試しください。<br>お急ぎの場合はお電話（<a href="tel:0533581212" style="color:inherit;font-weight:700;">0533-58-1212</a>）でも承ります。';
       })
       .then(function () {
         sending = false; submitBtn.disabled = false; submitBtn.textContent = label;

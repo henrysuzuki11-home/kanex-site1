@@ -34,8 +34,16 @@
     reform: 'リフォーム', renovation: 'リフォーム', 'リフォーム': 'リフォーム',
     demolition: '解体', kaitai: '解体', '解体': '解体',
     tool: '工具', tools: '工具', kougu: '工具', '工具': '工具',
-    parts: '電子部品', denshi: '電子部品', electronics: '電子部品', 'electronic': '電子部品', '電子部品': '電子部品'
+    parts: '電子部品', denshi: '電子部品', electronics: '電子部品', 'electronic': '電子部品', '電子部品': '電子部品',
+    recruit: '採用', saiyo: '採用', job: '採用', career: '採用', '採用': '採用'
   };
+
+  // 種別別の見出し・ラベル（採用はフォーム全体を「応募」文脈に切替）
+  var TITLES = {
+    '採用':   { 2: '応募者情報', 3: '希望条件', 4: '詳細情報', 5: '応募内容の確認', msg: '自己PR・ご質問', g2: '応募者情報', g3: '希望条件', g4: '詳細情報' },
+    '_def':   { 2: 'お客様情報', 3: '相談内容', 4: '詳細条件', 5: '入力内容の確認', msg: 'お問い合わせ内容', g2: 'お客様情報', g3: '相談内容', g4: '詳細条件' }
+  };
+  function titlesFor(type) { return TITLES[type] || TITLES._def; }
 
   function getParam(name) {
     var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search);
@@ -61,7 +69,27 @@
       blk.classList.toggle('kx-active', on);
       blk.querySelectorAll('input, select, textarea').forEach(function (el) { el.disabled = !on; });
     });
+    // 採用は共通「電話(tel)」を使わず、採用ブロックの phone を使う（重複・誤送信防止）
+    var telField = document.getElementById('kx-tel-field');
+    var telInput = document.getElementById('kx-tel');
+    if (telField && telInput) {
+      var isRecruit = type === '採用';
+      telField.style.display = isRecruit ? 'none' : '';
+      telInput.disabled = isRecruit;
+    }
+    updateTitles(type);
     refreshCustomer();
+  }
+
+  /* ---- 見出し・ラベルを種別に合わせて切替 ---- */
+  function updateTitles(type) {
+    var t = titlesFor(type);
+    [2, 3, 4, 5].forEach(function (n) {
+      var el = form.querySelector('.kx-step[data-step="' + n + '"] .kx-step-title');
+      if (el) el.textContent = t[n];
+    });
+    var ml = form.querySelector('label[for="kx-message"]');
+    if (ml) ml.innerHTML = esc(t.msg) + '<span class="kx-req">必須</span>';
   }
 
   /* ---- リフォーム 個人/法人 ---- */
@@ -172,7 +200,8 @@
     return rows;
   }
   function renderReview() {
-    var groups = [{ n: 1, t: 'お問い合わせ種別' }, { n: 2, t: 'お客様情報' }, { n: 3, t: '相談内容' }, { n: 4, t: '詳細条件' }];
+    var t = titlesFor(getSelectedType());
+    var groups = [{ n: 1, t: 'お問い合わせ種別' }, { n: 2, t: t.g2 }, { n: 3, t: t.g3 }, { n: 4, t: t.g4 }];
     var html = '';
     groups.forEach(function (g) {
       var rows = collectStep(g.n);
@@ -276,10 +305,21 @@
   function toCamel(k) { return k.replace(/_([a-z])/g, function (_, c) { return c.toUpperCase(); }); }
 
   function showComplete(id) {
+    var recruit = getSelectedType() === '採用';
+    var h = completeEl.querySelector('h3');
+    var p = completeEl.querySelector('p');
+    if (h) h.textContent = recruit ? 'ご応募ありがとうございます' : 'お問い合わせありがとうございます';
+    if (p) p.innerHTML = recruit
+      ? '応募内容を受け付けました。<br>内容を確認のうえ、担当者よりご連絡いたします。'
+      : '内容を確認のうえ、担当者よりご連絡いたします。<br>通常2〜3営業日以内にご返信いたします。';
     form.hidden = true;
     completeEl.hidden = false;
     var box = document.getElementById('kx-complete-id');
-    if (id && box) { box.hidden = false; box.querySelector('b').textContent = String(id).replace(/[<>&]/g, ''); }
+    if (id && box) {
+      box.hidden = false;
+      box.childNodes[0].nodeValue = recruit ? '受付番号：' : 'お問い合わせ番号：';
+      box.querySelector('b').textContent = String(id).replace(/[<>&]/g, '');
+    }
     completeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
@@ -299,7 +339,8 @@
   var fromParam = !!pre;
   if (!pre) {
     var ref = document.referrer || '';
-    if (/electronics/i.test(ref)) pre = '電子部品';
+    if (/recruit/i.test(ref)) pre = '採用';
+    else if (/electronics/i.test(ref)) pre = '電子部品';
     else if (/precision-tools/i.test(ref)) pre = '工具';
     else if (/demolition/i.test(ref)) pre = '解体';
     else if (/(residential|reform|exterior-painting|construction)/i.test(ref)) pre = 'リフォーム';

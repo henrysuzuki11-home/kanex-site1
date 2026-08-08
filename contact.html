@@ -130,6 +130,7 @@
           <label class="kx-card"><input type="radio" name="inquiry_type" value="解体"><span class="kx-card-t">解体</span><span class="kx-card-d">建物・部分解体</span></label>
           <label class="kx-card"><input type="radio" name="inquiry_type" value="工具"><span class="kx-card-t">工具</span><span class="kx-card-d">見積・調達相談</span></label>
           <label class="kx-card"><input type="radio" name="inquiry_type" value="電子部品"><span class="kx-card-t">電子部品</span><span class="kx-card-d">EOL・調達相談</span></label>
+          <label class="kx-card"><input type="radio" name="inquiry_type" value="採用"><span class="kx-card-t">採用</span><span class="kx-card-d">KANEXで働くことにご興味のある方</span></label>
         </div>
       </div>
       <div class="kx-step" data-step="2">
@@ -171,7 +172,7 @@
             <p class="kx-error-msg"></p>
           </div>
           </div>
-          <div class="kx-field">
+          <div class="kx-field" id="kx-tel-field">
             <label for="kx-tel">電話番号</label>
             <input id="kx-tel" name="tel" type="tel" autocomplete="tel">
             <p class="kx-hint">お電話での折り返しをご希望の場合はご記入ください。</p>
@@ -204,6 +205,18 @@
           <div class="kx-field">
             <label for="kx-department">部署名</label>
             <input id="kx-department" name="department" type="text">
+          </div>
+          </div>
+        </div>
+        <div class="kx-only" data-only="採用">
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-furigana">フリガナ</label>
+            <input id="kx-furigana" name="furigana" type="text" autocomplete="off">
+          </div>
+          <div class="kx-field">
+            <label for="kx-phone">電話番号</label>
+            <input id="kx-phone" name="phone" type="tel" autocomplete="tel">
           </div>
           </div>
         </div>
@@ -337,6 +350,36 @@
             <label for="kx-desired_delivery">希望納期</label>
             <input id="kx-desired_delivery" name="desired_delivery" type="text">
           </div>
+          </div>
+        </div>
+        <div class="kx-only" data-only="採用">
+          <div class="kx-field">
+            <label for="kx-desired_position">希望職種<span class="kx-req">必須</span></label>
+            <select id="kx-desired_position" name="desired_position" data-required="1"><option value="">選択してください</option><option value="施工・現場（塗装・解体・リフォーム）">施工・現場（塗装・解体・リフォーム）</option><option value="営業・顧客対応">営業・顧客対応</option><option value="調達・購買（電子基板・工具）">調達・購買（電子基板・工具）</option><option value="管理・事務">管理・事務</option><option value="幹部候補・総合職">幹部候補・総合職</option><option value="その他">その他</option></select>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-employment_type">希望雇用形態</label>
+            <select id="kx-employment_type" name="employment_type"><option value="">選択してください</option><option value="正社員">正社員</option><option value="契約社員">契約社員</option><option value="パート・アルバイト">パート・アルバイト</option><option value="業務委託">業務委託</option><option value="その他">その他</option></select>
+          </div>
+          <div class="kx-field">
+            <label for="kx-desired_location">希望勤務地</label>
+            <input id="kx-desired_location" name="desired_location" type="text" placeholder="例）蒲郡市 / 三河エリア">
+          </div>
+          </div>
+          <div class="kx-grid2">
+          <div class="kx-field">
+            <label for="kx-current_occupation">現在の職業</label>
+            <input id="kx-current_occupation" name="current_occupation" type="text">
+          </div>
+          <div class="kx-field">
+            <label for="kx-experience_years">経験年数</label>
+            <input id="kx-experience_years" name="experience_years" type="text" placeholder="例）3年">
+          </div>
+          </div>
+          <div class="kx-field">
+            <label for="kx-available_start_date">入社可能時期</label>
+            <input id="kx-available_start_date" name="available_start_date" type="text" placeholder="例）即日 / 2か月後">
           </div>
         </div>
           <div class="kx-field">
@@ -533,6 +576,23 @@
           <div class="kx-field">
             <label for="kx-traceability">トレーサビリティ要否</label>
             <select id="kx-traceability" name="traceability"><option value="">選択してください</option><option value="要">要</option><option value="不要">不要</option><option value="不明">不明</option></select>
+          </div>
+          </div></details>
+        </div>
+        <div class="kx-only" data-only="採用">
+          <details class="kx-acc"><summary>応募書類・詳細（任意）</summary><div class="kx-acc-body">
+          <div class="kx-field">
+            <label for="kx-qualifications">保有資格</label>
+            <input id="kx-qualifications" name="qualifications" type="text" placeholder="例）普通自動車免許、施工管理技士 など">
+          </div>
+          <div class="kx-field">
+            <label for="kx-resume_url">履歴書URL</label>
+            <input id="kx-resume_url" name="resume_url" type="url" placeholder="Google Drive等の共有URL">
+            <p class="kx-hint">ファイルではなく共有URLをご記入ください（任意）。</p>
+          </div>
+          <div class="kx-field">
+            <label for="kx-career_history_url">職務経歴書URL</label>
+            <input id="kx-career_history_url" name="career_history_url" type="url" placeholder="Google Drive等の共有URL">
           </div>
           </div></details>
         </div>

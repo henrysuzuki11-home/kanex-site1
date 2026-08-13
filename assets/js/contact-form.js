@@ -27,6 +27,7 @@
   var typeRadios = form.querySelectorAll('input[name="inquiry_type"]');
   var TOTAL = 5;
   var current = 1;
+  var maxStep = 1;
   var sending = false;
   var started = false;
 
@@ -128,6 +129,15 @@
     submitBtn.hidden = current !== TOTAL;
     statusEl.className = 'kx-status'; statusEl.textContent = '';
     if (current === TOTAL) renderReview();
+    // 到達した最深ステップを1回だけ計測（どのステップで離脱したか把握用）
+    if (current > maxStep) {
+      maxStep = current;
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'form_step', { step: current, inquiry_type: getSelectedType(), page_path: location.pathname });
+        }
+      } catch (e) {}
+    }
     var sec = document.getElementById('inquiry-form');
     if (sec && sec.scrollIntoView) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

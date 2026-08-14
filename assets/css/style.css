@@ -1404,7 +1404,11 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
 .kx-complete .kx-id-box b{color:var(--navy);letter-spacing:0.04em;}
 @media (max-width:600px){
   .kx-cards{grid-template-columns:1fr;}
-  .kx-nav{flex-direction:row;}
+  /* モバイルの .btn{width:100%!important} が nav の flex を壊し「次へ」が画面外へ出るのを防ぐ */
+  .kx-nav{flex-direction:row;width:100%;}
+  .kx-nav .btn{width:auto!important;}
+  .kx-nav .kx-next,.kx-nav .kx-submit{flex:1 1 auto;min-width:0;}
+  .kx-nav .kx-back{flex:0 0 auto;}
 }
 
 /* nav ボタンの表示切替（モバイルの .btn{display:flex!important} を打ち消す） */

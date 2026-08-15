@@ -130,11 +130,14 @@
     statusEl.className = 'kx-status'; statusEl.textContent = '';
     if (current === TOTAL) renderReview();
     // 到達した最深ステップを1回だけ計測（どのステップで離脱したか把握用）
+    // ステップ別イベント名（form_step_2〜5）で、週次CSVに各ステップ通過数がそのまま出る＝離脱STEPが可視化される
     if (current > maxStep) {
       maxStep = current;
       try {
         if (typeof window.gtag === 'function') {
-          window.gtag('event', 'form_step', { step: current, inquiry_type: getSelectedType(), page_path: location.pathname });
+          var meta = { step: current, inquiry_type: getSelectedType(), page_path: location.pathname };
+          window.gtag('event', 'form_step', meta);
+          window.gtag('event', 'form_step_' + current, meta);
         }
       } catch (e) {}
     }

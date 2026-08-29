@@ -1413,3 +1413,7 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
 
 /* nav ボタンの表示切替（モバイルの .btn{display:flex!important} を打ち消す） */
 .kx-nav .btn[hidden]{display:none!important;}
+
+/* 必須ラジオグループ（種別カード・個人/法人）未選択時の可視エラー */
+.kx-fieldset.kx-invalid .kx-legend{color:#B91C1C;}
+.kx-fieldset.kx-invalid .kx-choice,.kx-fieldset.kx-invalid .kx-card{border-color:#EF4444;}

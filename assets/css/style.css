@@ -1330,8 +1330,11 @@ h1, h2, h3, h4, h5, h6, p, li, span, a, button, div, td, th, label {
 .kx-subsection.kx-active{display:block;}
 @keyframes kxfade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 .kx-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden;}
-.kx-consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-700);margin:8px 0 20px;line-height:1.6;}
-.kx-consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--orange);flex-shrink:0;}
+.kx-consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-700);margin:8px 0 20px;line-height:1.6;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border var(--t),background var(--t);}
+.kx-consent:hover{border-color:var(--orange);}
+.kx-consent input{margin-top:2px;width:20px;height:20px;accent-color:var(--orange);flex-shrink:0;}
+.kx-consent.kx-invalid{border:1.5px solid #EF4444 !important;background:#FEF2F2 !important;color:#B91C1C;box-shadow:0 0 0 3px rgba(239,68,68,0.28);}
+.kx-consent.kx-invalid a{color:#B91C1C;}
 .kx-submit{width:100%;justify-content:center;font-size:16px;padding:16px;}
 .kx-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none;}
 .kx-status{margin-top:16px;font-size:14px;line-height:1.75;border-radius:10px;}

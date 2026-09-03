@@ -146,8 +146,8 @@
   }
 
   /* ---- バリデーション（指定ステップ） ---- */
-  function validateStep(n) {
-    clearErrors();
+  function validateStep(n, noClear) {
+    if (!noClear) clearErrors();
     var step = form.querySelector('.kx-step[data-step="' + n + '"]');
     if (!step) return [];
     var invalid = [], seen = {};
@@ -256,9 +256,10 @@
     var hp = form.querySelector('input[name="website"]');
     if (hp && hp.value) { showComplete(''); return; }
 
-    // 最終ステップの必須（同意）＋ 全体の基本必須を確認
-    var invalid = validateStep(5);
-    [2, 3].forEach(function (n) { validateStep(n).forEach(function (el) { if (invalid.indexOf(el) === -1) invalid.push(el); }); });
+    // 最終ステップの必須（同意）＋ 全体の基本必須を確認（各エラー表示を消さないよう noClear で連続検証）
+    clearErrors();
+    var invalid = validateStep(5, true);
+    [2, 3].forEach(function (n) { validateStep(n, true).forEach(function (el) { if (invalid.indexOf(el) === -1) invalid.push(el); }); });
     if (invalid.length) {
       statusEl.className = 'kx-status kx-err';
       statusEl.innerHTML = '未入力の必須項目があります。「修正する」からご確認ください。';

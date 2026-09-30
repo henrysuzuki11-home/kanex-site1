@@ -68,6 +68,17 @@
       });
       return;
     }
+    /* A8.net / ValueCommerce のアフィリンク送客も affiliate_click として計測
+       （px.a8.net = A8成果リンク, ck.jp.ap.valuecommerce = VC成果リンク）。
+       1x1計測gif(0.gif/gifbanner)や画像srcは <a> ではないため発火しない。 */
+    if (href.indexOf('px.a8.net') !== -1 || href.indexOf('ck.jp.ap.valuecommerce.com') !== -1) {
+      window.gtag('event', 'affiliate_click', {
+        article_slug: (location.pathname.split('/').pop() || '').replace('.html', ''),
+        destination: href.indexOf('valuecommerce') !== -1 ? 'valuecommerce' : 'a8net',
+        page_path: location.pathname
+      });
+      return;
+    }
     if (link.hasAttribute('data-kanex-cta')) {
       window.gtag('event', 'kanex_contact_click', {
         article_slug: link.getAttribute('data-article-slug') || (location.pathname.split('/').pop() || '').replace('.html', ''),

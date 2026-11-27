@@ -36,7 +36,8 @@
     demolition: '解体', kaitai: '解体', '解体': '解体',
     tool: '工具', tools: '工具', kougu: '工具', '工具': '工具',
     parts: '電子部品', denshi: '電子部品', electronics: '電子部品', 'electronic': '電子部品', '電子部品': '電子部品',
-    recruit: '採用', saiyo: '採用', job: '採用', career: '採用', '採用': '採用'
+    recruit: '採用', saiyo: '採用', job: '採用', career: '採用', '採用': '採用',
+    other: 'その他', sonota: 'その他', etc: 'その他', 'その他': 'その他'
   };
 
   // 種別別の見出し・ラベル（採用はフォーム全体を「応募」文脈に切替）
